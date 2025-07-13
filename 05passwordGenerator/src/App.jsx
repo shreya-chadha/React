@@ -2,7 +2,7 @@ import { useState,useCallback,useEffect,useRef} from 'react'
 //useCallback is a React hook that lets you cache a function between re renders.
 //Think of memoization as caching a value so that it does not need to be recalculated.
 //why do we need it here?
-//Hume passwordGenerator fn ko baar baar call krna padega agr length change hoti hai,agr number aur sp.char allowed ya nhi..
+//Hume passwordGenerator fn ko baar baar call krna padega agr length change hoti hai,agr number aur sp.char allowed hai ya nhi..
 //Issi cheez ko avoid krne ke liye we can cache this fn. so that it doesnt get recreated until all the dependencies are same  
 //Math.random() func returns a value between 0(inclusive) and 1(exclusive).As 0 is inclusive so we have to add 1 to not make index 0 
 //useEffect is a React hook that perform side effects. 
@@ -12,7 +12,7 @@ function App() {
   const[numberAllowed,setNumberAllowed]=useState(false)
   const[charAllowed,setCharAllowed]=useState(false)
   const[password,setPassword]=useState("")
-  //useRef Hook
+  //useRef is a React Hook that lets you reference a value that’s not needed for rendering.
   const passwordRef=useRef(null)
   //Password ko generate ke liye
   const passwordGenerator=useCallback( ()=>{
@@ -85,7 +85,7 @@ function App() {
           onChange={(e)=>{setNumberAllowed((prev)=>!prev)}}></input>
           <label>Numbers</label>
           <input type="checkbox"
-          defaultChecked={numberAllowed}
+          defaultChecked={charAllowed}
           id="charInput"
           onChange={(e)=>{setCharAllowed((prev)=>!prev)}}></input>
           <label>Characters</label>
